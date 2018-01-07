@@ -3,20 +3,6 @@ body {
   margin: auto;
 }
 
-.content-area {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.content-card {
-  box-shadow: 0px 0px 5px 0px lightsteelblue;
-  width: 17%;
-  margin: 10px;
-  animation: card-fade-in 1s linear 1;
-  height: auto;
-}
-
 @keyframes card-fade-in {
   0% {
     filter: opacity(0);
@@ -24,4 +10,22 @@ body {
   100% {
     filter: opacity(1);
   }
+}
+
+.will-wrap {
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.fadeIn-enter {
+  opacity: 0;
+  transition: 0.05s ease-in-out all;
+}
+
+.fadeIn-enter.fadeIn-enter-active {
+  opacity: 1;
+}
+
+.column-width-adjust {
+  padding: 1rem 4rem;
 }
