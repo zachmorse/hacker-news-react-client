@@ -4,10 +4,10 @@ body {
 }
 
 @keyframes card-fade-in {
-  0% {
+  from {
     filter: opacity(0);
   }
-  100% {
+  to {
     filter: opacity(1);
   }
 }
@@ -17,15 +17,22 @@ body {
   flex-direction: row;
 }
 
-.fadeIn-enter {
-  opacity: 0;
-  transition: 0.05s ease-in-out all;
-}
-
-.fadeIn-enter.fadeIn-enter-active {
-  opacity: 1;
+.fadeUp {
+  animation-name: card-fade-in;
+  animation-duration: 0.75s;
 }
 
 .column-width-adjust {
   padding: 1rem 4rem;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+}
+
+.image-adjustment {
+  height: 172px;
+  max-height: 172px;
+  width: auto;
 }
