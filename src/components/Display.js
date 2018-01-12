@@ -1,37 +1,41 @@
 import React, { Component } from "react";
-import ReactBricks from "react-bricks-infinite";
 
 export default class Display extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      bricks: this.props.stories,
-      reRender: false,
-      containerId: "bricks-container-app",
-      hasMoreBricks: true,
-      sizes: [
-        { columns: 2, gutter: 2 },
-        { mq: "768px", columns: 4, gutter: 2 },
-        { mq: "1024px", columns: 5, gutter: 2 }
-      ]
-    };
-  }
-
   render() {
-    const newStories = this.props.stories.map((details, index) => {
+    const newStories = this.props.data.map((details, index) => {
       return (
-        <div key={index} className="">
-          <div className="">
+        <div
+          key={index}
+          id={index}
+          className="column is-3-desktop is-4-tablet column-width-adjust"
+        >
+          <div className="fadeUp has-text-centered has-text-left-mobile">
+            <figure className="flex is-hidden-mobile">
+              <a href={details.url} target="blank">
+                <img
+                  src={details.ogImage}
+                  className="image-adjustment"
+                  alt={details.title}
+                />
+              </a>
+            </figure>
             <a href={details.url} target="blank">
-              <h3 className="">{details.title}</h3>
+              <p className="title is-size-5">{details.title} </p>
             </a>
-            <p>{details.by}</p>
-            <p />
+            <p className="is-size-7 is-hidden-mobile">({details.domain})</p>
+            <p className="is-size-7">
+              {details.points} points by {details.user}, {details.time_ago}
+            </p>
+            <p className="is-size-7 has-text-weight-semibold has-text-grey">
+              <a href={"http://node-hnapi.herokuapp.com/item/" + details.id}>
+                {details.comments_count} comments
+              </a>
+            </p>
           </div>
         </div>
       );
     });
-    return <div className="bricks-container">{newStories}</div>;
+
+    return <div className="columns is-centered will-wrap">{newStories}</div>;
   }
 }

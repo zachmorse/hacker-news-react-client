@@ -3,7 +3,7 @@ import "../styles/App.css";
 
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import Home from "./Home";
+import TopStories from "./TopStories";
 import Mainlayout from "./Mainlayout";
 
 class App extends Component {
@@ -14,8 +14,7 @@ class App extends Component {
           <BrowserRouter>
             <Mainlayout>
               <Switch>
-                <Route exact path="/" component={Home} />
-                <Route path="/newest" component={Home} />
+                <Route exact path="/" component={TopStories} />
               </Switch>
             </Mainlayout>
           </BrowserRouter>

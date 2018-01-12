@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 
 import Header from "./Header";
-import Footer from "./Footer";
 
 export default class MainLayout extends Component {
   render() {
@@ -9,7 +8,6 @@ export default class MainLayout extends Component {
       <div>
         <Header />
         {this.props.children}
-        <Footer />
       </div>
     );
   }

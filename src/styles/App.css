@@ -12,6 +12,12 @@ body {
   }
 }
 
+.loading-image-format {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .will-wrap {
   flex-wrap: wrap;
   flex-direction: row;
@@ -19,11 +25,11 @@ body {
 
 .fadeUp {
   animation-name: card-fade-in;
-  animation-duration: 0.75s;
+  animation-duration: 0.5s;
 }
 
 .column-width-adjust {
-  padding: 1rem 4rem;
+  padding: 0.5rem 2rem;
 }
 
 .image-container {
@@ -32,7 +38,23 @@ body {
 }
 
 .image-adjustment {
-  height: 172px;
+  /* height: 172px; */
   max-height: 172px;
   width: auto;
+  box-shadow: 0px 0px 20px 0px lightgrey;
+}
+
+.image-rotation {
+  animation: loading-image-animate infinite 2s alternate;
+}
+
+@keyframes loading-image-animate {
+  from {
+    /* transform: rotate(0deg); */
+    transform: rotateY(0deg);
+  }
+  to {
+    /* transform: rotate(360deg); */
+    transform: rotateY(180deg);
+  }
 }

@@ -5,18 +5,31 @@ export default class Header extends Component {
   render() {
     return (
       <div>
-        <section className="Hero">
-          <div className="hero-body">
-            <h1 className="title">HACKER NEWS FEED</h1>
+        {/* <section className="Hero">
+          <div className="hero-body has-text-centered">
+            <h1 className="title is-size-npm1">HACKER NEWS</h1>
           </div>
-        </section>
-        <div>
-          <NavLink to="/">News</NavLink>
-          {/* <NavLink to="/">Comments</NavLink>
-        <NavLink to="/">Show</NavLink>
-        <NavLink to="/">Ask</NavLink>
-        <NavLink to="/">Jobs</NavLink> */}
-        </div>
+        </section> */}
+        <h1 className="title is-size-1 navbar-item is-paddingless is-marginless">
+          HACKER NEWS
+        </h1>
+        <nav className="navbar">
+          <NavLink to="/" className="navbar-item" style={{ paddingLeft: 0 }}>
+            Top Stories
+          </NavLink>
+          <NavLink to="/new" className="navbar-item">
+            New
+          </NavLink>
+          <NavLink to="/show" className="navbar-item">
+            Show
+          </NavLink>
+          <NavLink to="/ask" className="navbar-item">
+            Ask
+          </NavLink>
+          <NavLink to="/jobs" className="navbar-item">
+            Jobs
+          </NavLink>
+        </nav>
         <hr />
       </div>
     );
