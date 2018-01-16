@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import loadingGraphic from "../assets/spacesail.svg";
+import Preloader from "./Preloader";
 import Display from "./Display";
 
 export default class TopStories extends Component {
@@ -21,6 +21,7 @@ export default class TopStories extends Component {
           storyList: response.data,
           dataLoaded: true
         });
+        console.log(this.state);
         return response.data;
       })
       .catch(error => {
@@ -37,11 +38,7 @@ export default class TopStories extends Component {
 
   render() {
     if (!this.state.dataLoaded) {
-      return (
-        <div className="loading-image-format">
-          <img className="image image-rotation" src={loadingGraphic} alt="" />
-        </div>
-      );
+      return <Preloader />;
     }
     return <Display data={this.state.storyList} />;
   }

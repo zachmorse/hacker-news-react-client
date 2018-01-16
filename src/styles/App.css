@@ -3,6 +3,12 @@ body {
   margin: auto;
 }
 
+.appHeader {
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
+
 @keyframes card-fade-in {
   from {
     filter: opacity(0);

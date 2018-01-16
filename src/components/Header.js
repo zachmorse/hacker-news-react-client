@@ -4,12 +4,7 @@ import { NavLink } from "react-router-dom";
 export default class Header extends Component {
   render() {
     return (
-      <div>
-        {/* <section className="Hero">
-          <div className="hero-body has-text-centered">
-            <h1 className="title is-size-npm1">HACKER NEWS</h1>
-          </div>
-        </section> */}
+      <div className="appHeader">
         <h1 className="title is-size-1 navbar-item is-paddingless is-marginless">
           HACKER NEWS
         </h1>

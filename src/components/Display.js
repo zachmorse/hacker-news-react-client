@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 
 export default class Display extends Component {
+  launchModal = () => {
+    console.log("modal should launch");
+  };
+
   render() {
-    const newStories = this.props.data.map((details, index) => {
+    const stories = this.props.data.map((details, index) => {
       return (
         <div
           key={index}
@@ -22,20 +26,32 @@ export default class Display extends Component {
             <a href={details.url} target="blank">
               <p className="title is-size-5">{details.title} </p>
             </a>
-            <p className="is-size-7 is-hidden-mobile">({details.domain})</p>
+            <p
+              className="is-size-7 is-hidden-mobile"
+              onClick={this.launchModal}
+            >
+              ({details.domain})
+            </p>
             <p className="is-size-7">
               {details.points} points by {details.user}, {details.time_ago}
             </p>
-            <p className="is-size-7 has-text-weight-semibold has-text-grey">
+            <p
+              className="is-size-7 has-text-weight-semibold has-text-grey"
+              onClick={this.launchModal}
+            >
               <a href={"http://node-hnapi.herokuapp.com/item/" + details.id}>
                 {details.comments_count} comments
               </a>
             </p>
           </div>
+
+          <div className="modal launchModal">
+            <p>some modal stuff</p>
+          </div>
         </div>
       );
     });
 
-    return <div className="columns is-centered will-wrap">{newStories}</div>;
+    return <div className="columns is-centered will-wrap">{stories}</div>;
   }
 }
