@@ -17,6 +17,7 @@ export default class TopStories extends Component {
       // .post("https://ogs-server.herokuapp.com/get-og-images/", data)
       .post("http://localhost:6060/get-og-images/", data)
       .then(response => {
+        console.log(response);
         this.setState({
           storyList: response.data,
           dataLoaded: true
@@ -30,16 +31,25 @@ export default class TopStories extends Component {
   };
 
   async componentDidMount() {
-    const newStoriesUrl = "https://node-hnapi.herokuapp.com/news";
-    const response = await fetch(newStoriesUrl);
+    const topStoriesUrl = "https://node-hnapi.herokuapp.com/news";
+    const response = await fetch(topStoriesUrl);
     const stories = await response.json();
     await this.getOgImageData(stories);
+    document.title = "Top Stories // Hacker News";
   }
 
   render() {
     if (!this.state.dataLoaded) {
-      return <Preloader />;
+      return (
+        <div>
+          <Preloader />
+        </div>
+      );
     }
-    return <Display data={this.state.storyList} />;
+    return (
+      <div>
+        <Display data={this.state.storyList} />
+      </div>
+    );
   }
 }
