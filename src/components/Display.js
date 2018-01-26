@@ -1,8 +1,27 @@
 import React, { Component } from "react";
+import CommentModal from "./CommentModal";
 
 export default class Display extends Component {
-  launchModal = () => {
-    console.log("modal should launch");
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalActive: false,
+      modalTarget: ""
+    };
+  }
+
+  launchModal = e => {
+    this.setState({
+      modalActive: true,
+      modalTarget: e.target.id
+    });
+  };
+
+  closeModal = e => {
+    this.setState({
+      modalActive: false,
+      modalTarget: "http://node-hnapi.herokuapp.com/item/16205776"
+    });
   };
 
   render() {
@@ -37,16 +56,28 @@ export default class Display extends Component {
             </p>
             <p
               className="is-size-7 has-text-weight-semibold has-text-grey"
-              onClick={this.launchModal}
+              id={"http://node-hnapi.herokuapp.com/item/" + details.id}
+              // onClick={this.launchModal}
             >
               <a href={"http://node-hnapi.herokuapp.com/item/" + details.id}>
                 {details.comments_count} comments
               </a>
+              {/* {details.comments_count} comments */}
             </p>
           </div>
-
-          <div className="modal launchModal">
-            <p>some modal stuff</p>
+          <div
+            className={!this.state.modalActive ? "modal" : "modal is-active"}
+            id="modal"
+          >
+            <div className="modal-background" onClick={this.closeModal} />
+            <div className="modal-content">
+              {/* <CommentModal url={this.state.modalTarget} /> */}
+              <h1>modal stuff</h1>
+            </div>
+            <button
+              className="modal-close is-large"
+              onClick={this.closeModal}
+            />
           </div>
         </div>
       );

@@ -31,7 +31,7 @@ export default class TopStories extends Component {
   };
 
   async componentDidMount() {
-    const topStoriesUrl = "https://node-hnapi.herokuapp.com/news";
+    const topStoriesUrl = "https://node-hnapi.herokuapp.com/news?page=1";
     const response = await fetch(topStoriesUrl);
     const stories = await response.json();
     await this.getOgImageData(stories);
