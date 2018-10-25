@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import CommentModal from "./CommentModal";
+// import CommentModal from "./CommentModal";
 
-export default class Display extends Component {
+class Display extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -86,3 +86,5 @@ export default class Display extends Component {
     return <div className="columns is-centered will-wrap">{stories}</div>;
   }
 }
+
+export default Display;

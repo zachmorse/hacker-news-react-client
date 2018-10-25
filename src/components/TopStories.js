@@ -4,7 +4,7 @@ import axios from "axios";
 import Preloader from "./Preloader";
 import Display from "./Display";
 
-export default class TopStories extends Component {
+class TopStories extends Component {
   state = {
     storyList: [],
     storyPageSize: 30,
@@ -13,16 +13,19 @@ export default class TopStories extends Component {
   };
 
   getOgImageData = data => {
+    let startTime = new Date();
     axios
       // .post("https://ogs-server.herokuapp.com/get-og-images/", data)
       .post("http://localhost:6060/get-og-images/", data)
       .then(response => {
-        console.log(response);
+        console.log();
+        console.log("NODE SERVER RESPONSE:", response);
         this.setState({
           storyList: response.data,
           dataLoaded: true
         });
-        console.log(this.state);
+        console.log("UPDATED STATE:", this.state);
+        console.log(`ELAPSED TIME: ${new Date() - startTime} ms`);
         return response.data;
       })
       .catch(error => {
@@ -53,3 +56,5 @@ export default class TopStories extends Component {
     );
   }
 }
+
+export default TopStories;
