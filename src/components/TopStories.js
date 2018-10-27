@@ -1,21 +1,20 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { fetchPosts } from "../actions/postActions";
 
-export default class TopStories extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      posts: []
-    };
+class TopStories extends Component { 
+  componentDidMount() {
+    this.props.fetchPosts();    
   }
 
-  componentDidMount() {
-    fetch("https://node-hnapi.herokuapp.com/news?page=1")
-      .then(res => res.json())
-      .then(data => this.setState({ posts: data }));
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.moreStories) {
+      // Do some stuff with loading more stories
+    }
   }
 
   render() {
-    const stories = this.state.posts.map((post, index) => {
+    const stories = this.props.posts.map((post, index) => {
       return (
         <div key={index}>
           <h3>{post.title}</h3>
@@ -31,3 +30,9 @@ export default class TopStories extends Component {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  posts: state.posts.items
+})
+
+export default connect(mapStateToProps, { fetchPosts })(TopStories)

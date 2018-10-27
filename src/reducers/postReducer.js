@@ -7,7 +7,7 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case FETCH_POSTS:
-      console.log("POST REDUCER HIT");
+      console.log("FETCH_POSTS REDUCER HIT");
       return {
         ...state,
         items: action.payload
