@@ -10,20 +10,6 @@ class Display extends Component {
     };
   }
 
-  launchModal = e => {
-    this.setState({
-      modalActive: true,
-      modalTarget: e.target.id
-    });
-  };
-
-  closeModal = e => {
-    this.setState({
-      modalActive: false,
-      modalTarget: "http://node-hnapi.herokuapp.com/item/16205776"
-    });
-  };
-
   render() {
     const stories = this.props.data.map((details, index) => {
       return (
@@ -35,11 +21,11 @@ class Display extends Component {
           <div className="fadeUp has-text-centered has-text-left-mobile">
             <figure className="flex is-hidden-mobile">
               <a href={details.url} target="blank">
-                <img
+                {/* <img
                   src={details.ogImage}
                   className="image-adjustment"
                   alt={details.title}
-                />
+                /> */}
               </a>
             </figure>
             <a href={details.url} target="blank">

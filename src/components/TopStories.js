@@ -1,60 +1,33 @@
 import React, { Component } from "react";
-import axios from "axios";
 
-import Preloader from "./Preloader";
-import Display from "./Display";
+export default class TopStories extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      posts: []
+    };
+  }
 
-class TopStories extends Component {
-  state = {
-    storyList: [],
-    storyPageSize: 30,
-    pageNumber: 1,
-    dataLoaded: false
-  };
-
-  getOgImageData = data => {
-    let startTime = new Date();
-    axios
-      // .post("https://ogs-server.herokuapp.com/get-og-images/", data)
-      .post("http://localhost:6060/get-og-images/", data)
-      .then(response => {
-        console.log();
-        console.log("NODE SERVER RESPONSE:", response);
-        this.setState({
-          storyList: response.data,
-          dataLoaded: true
-        });
-        console.log("UPDATED STATE:", this.state);
-        console.log(`ELAPSED TIME: ${new Date() - startTime} ms`);
-        return response.data;
-      })
-      .catch(error => {
-        console.log("error", error);
-      });
-  };
-
-  async componentDidMount() {
-    const topStoriesUrl = "https://node-hnapi.herokuapp.com/news?page=1";
-    const response = await fetch(topStoriesUrl);
-    const stories = await response.json();
-    await this.getOgImageData(stories);
-    document.title = "Top Stories // Hacker News";
+  componentDidMount() {
+    fetch("https://node-hnapi.herokuapp.com/news?page=1")
+      .then(res => res.json())
+      .then(data => this.setState({ posts: data }));
   }
 
   render() {
-    if (!this.state.dataLoaded) {
+    const stories = this.state.posts.map((post, index) => {
       return (
-        <div>
-          <Preloader />
+        <div key={index}>
+          <h3>{post.title}</h3>
         </div>
       );
-    }
+    });
+
     return (
       <div>
-        <Display data={this.state.storyList} />
+        <h1>STORIES: </h1>
+        {stories}
       </div>
     );
   }
 }
-
-export default TopStories;
