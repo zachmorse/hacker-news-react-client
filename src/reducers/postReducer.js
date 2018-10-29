@@ -1,4 +1,4 @@
-import { FETCH_POSTS } from "../actions/types";
+import { FETCH_TOP_STORIES } from "../actions/types";
 
 const initialState = {
   items: []
@@ -6,8 +6,8 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
-    case FETCH_POSTS:
-      console.log("FETCH_POSTS REDUCER HIT");
+    case FETCH_TOP_STORIES:
+      console.log("FETCH_TOP_STORIES REDUCER HIT");
       return {
         ...state,
         items: action.payload

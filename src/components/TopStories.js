@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchPosts } from "../actions/postActions";
+import { fetchTopStories } from "../actions/postActions";
 
-class TopStories extends Component { 
+class TopStories extends Component {
   componentDidMount() {
-    this.props.fetchPosts();    
+    this.props.fetchTopStories();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -17,22 +17,25 @@ class TopStories extends Component {
     const stories = this.props.posts.map((post, index) => {
       return (
         <div key={index}>
-          <h3>{post.title}</h3>
+          <a href={post.url}>
+            <h3>{post.title}</h3>
+          </a>
+          <p>
+            {post.points} {post.time_ago} by {post.user}
+          </p>
         </div>
       );
     });
 
-    return (
-      <div>
-        <h1>STORIES: </h1>
-        {stories}
-      </div>
-    );
+    return <div>{stories}</div>;
   }
 }
 
 const mapStateToProps = state => ({
   posts: state.posts.items
-})
+});
 
-export default connect(mapStateToProps, { fetchPosts })(TopStories)
+export default connect(
+  mapStateToProps,
+  { fetchTopStories }
+)(TopStories);
