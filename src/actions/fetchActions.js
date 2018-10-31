@@ -2,7 +2,7 @@ import { FETCH_TOP_STORIES } from "./types";
 
 export const fetchTopStories = () => dispatch => {
   console.log("FETCH TOP STORIES ACTION HIT");
-  fetch("https://node-hnapi.herokuapp.com/news?page=1")
+  fetch("https://node-hnapi.herokuapp.com/news?")
     .then(res => res.json())
     .then(data =>
       dispatch({

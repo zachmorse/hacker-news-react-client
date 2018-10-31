@@ -6,7 +6,6 @@ import "./styles/App.css";
 
 import TopStories from "./components/TopStories";
 import Mainlayout from "./components/Mainlayout";
-// import CommentModal from "./CommentModal";
 
 import store from "./store";
 
@@ -19,7 +18,6 @@ class App extends Component {
             <Mainlayout>
               <Switch>
                 <Route exact path="/" component={TopStories} />
-                {/* <Route path="/new" component={CommentModal} /> */}
               </Switch>
             </Mainlayout>
           </BrowserRouter>
