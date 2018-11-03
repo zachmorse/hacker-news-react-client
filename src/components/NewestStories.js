@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchTopStories } from "../actions/fetchActions";
+import { fetchNewestStories } from "../actions/fetchActions";
 
-class TopStories extends Component {
+class NewestStories extends Component {
   componentDidMount() {
-    this.props.fetchTopStories();
+    this.props.fetchNewestStories();
+    // window.addEventListener("scroll", this.getScrollPos);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -13,6 +14,14 @@ class TopStories extends Component {
       // dispatch a redux call to load more
     }
   }
+
+  // componentWillUnmount() {
+  //   window.removeEventListener("scroll", this.getScrollPos);
+  // }
+
+  // getScrollPos = () => {
+  //   console.log("SCROLL POSITION:", window.scrollY);
+  // };
 
   render() {
     const stories = this.props.posts.map((post, index) => {
@@ -39,5 +48,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { fetchTopStories }
-)(TopStories);
+  { fetchNewestStories }
+)(NewestStories);

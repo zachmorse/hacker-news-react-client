@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { fetchTopStories } from "../actions/fetchActions";
+import { fetchBestStories } from "../actions/fetchActions";
 
-class TopStories extends Component {
+class BestStories extends Component {
   componentDidMount() {
-    this.props.fetchTopStories();
+    this.props.fetchBestStories();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -39,5 +39,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { fetchTopStories }
-)(TopStories);
+  { fetchBestStories }
+)(BestStories);
