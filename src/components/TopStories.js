@@ -34,9 +34,6 @@ class TopStories extends Component {
           <a href={post.url}>
             <h3>{post.title}</h3>
           </a>
-          <p>
-            {post.points} {post.time_ago} by {post.user}
-          </p>
         </div>
       );
     });
